@@ -7,6 +7,12 @@ import { FooterComponent } from '../app/footer/footer.component';
 import { AlumnosComponent } from '../app/alumnos/alumnos.component';
 
 import { AlumnoService } from '../app/alumnos/alumno.service';
+import { RouterModule, Routes  } from '@angular/router' ;
+
+const routes: Routes = [
+  {path: '', redirectTo: '/alumnos', pathMatch: 'full'},
+  {path: 'listadoAlumnos', component: AlumnosComponent},
+];
 
 @NgModule({
   declarations: [
@@ -16,7 +22,8 @@ import { AlumnoService } from '../app/alumnos/alumno.service';
     AlumnosComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [AlumnoService],
   bootstrap: [AppComponent]

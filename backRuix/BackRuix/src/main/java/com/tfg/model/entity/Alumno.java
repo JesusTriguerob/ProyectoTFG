@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,18 +21,16 @@ public class Alumno implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column
 	private String nombre;
+	
 	@Column
 	private String apellido;
-	@Column
-	@Temporal(value = TemporalType.DATE)
-	private Date fecha;
 	
-	@PrePersist
-	public void prePersist() {
-		fecha = new Date();
-	}
+	@Column(name="fecha_nac")
+	@Temporal(TemporalType.DATE)
+	private Date fechaNac;
 	
 	@Column
 	private String curso;
@@ -62,12 +59,12 @@ public class Alumno implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public Date getFechaNac() {
+		return fechaNac;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
 	}
 
 	public String getCurso() {

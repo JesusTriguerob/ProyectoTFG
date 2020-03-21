@@ -54,7 +54,7 @@ public class AlumnoRestController {
 		alumnoAct.setApellido(alumno.getApellido());
 		alumnoAct.setNombre(alumno.getNombre());
 		alumnoAct.setCurso(alumno.getCurso());
-		alumnoAct.setFecha(alumno.getFecha());
+		alumnoAct.setFechaNac(alumno.getFechaNac());
 		
 		return alumnoService.save(alumnoAct);
 	}

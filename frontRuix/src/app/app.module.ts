@@ -9,10 +9,13 @@ import { AlumnosComponent } from '../app/alumnos/alumnos.component';
 import { AlumnoService } from '../app/alumnos/alumno.service';
 import { RouterModule, Routes  } from '@angular/router' ;
 import { HttpClientModule } from '@angular/common/http';
+import { FormComponent } from './alumnos/form.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', redirectTo: '/alumnos', pathMatch: 'full'},
   {path: 'listadoAlumnos', component: AlumnosComponent},
+  {path: 'alumnos/form', component: FormComponent}
 ];
 
 @NgModule({
@@ -20,12 +23,14 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AlumnosComponent
+    AlumnosComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule ,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [AlumnoService],
   bootstrap: [AppComponent]

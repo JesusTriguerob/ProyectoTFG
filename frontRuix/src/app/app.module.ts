@@ -8,6 +8,7 @@ import { AlumnosComponent } from '../app/alumnos/alumnos.component';
 
 import { AlumnoService } from '../app/alumnos/alumno.service';
 import { RouterModule, Routes  } from '@angular/router' ;
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path: '', redirectTo: '/alumnos', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule ,
     RouterModule.forRoot(routes)
   ],
   providers: [AlumnoService],

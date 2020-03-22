@@ -1,35 +1,152 @@
-<div class="card border-successs mb-3 text-dark">
-<div class="card-header"> {{ titulo }}</div>
+<div style="margin-top: 15px"></div>
+<div class="card border-successs mb-3 text-dark" style="max-width: 100%; text-align:center">
+<div class="card-header"><h3 class="text-info"> {{ titulo }} </h3></div>
 <div class="card-body">
 
   <form (ngSubmit) = "create()">
 
+    <!-- SEPARADOR -->
     <div class="form-group row">
-      <label for="" class="col-form-label" col-sm-2>Nombre</label>
-      <div class="col-sm-6">
+      <h6 class="text-info">DATOS DEL ALUMNO</h6>
+    </div>
+    <hr>
+    <!-- PRIMERA LINEA -->
+    <div class="form-group row">
+
+      <label for="" class="col-form-label" col-sm-3><h6 class="text-info">Nombre</h6></label>
+      <div class="col-sm-3">
         <input type="text" class="form-control" [(ngModel)]="alumno.nombre" name="nombre">
       </div>
-    </div>
 
-    <div class="form-group row">
-      <label for="" class="col-form-label" col-sm-2>Apellido</label>
-      <div class="col-sm-6">
+      <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Apellidos</h6></label>
+      <div class="col-sm-4">
         <input type="text" class="form-control" [(ngModel)]="alumno.apellido" name="apellido">
       </div>
+
+      <label for="" class="col-form-label" col-sm-3><h6 class="text-info">DNI</h6></label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control"  name="nombre">
+      </div>
+
     </div>
 
+    <!-- SEGUNDA LINEA -->
+      <div class="form-group row">
+
+        <label for="" class="col-form-label" col-sm-3><h6 class="text-info">Email</h6></label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control"  name="nombre">
+        </div>
+
+        <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Calle</h6></label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control"  name="apellido">
+        </div>
+
+        <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Nº</h6></label>
+        <div class="col-sm-1">
+          <input type="text" class="form-control"  name="curso">
+        </div>
+
+        <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Telefono</h6></label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control"  name="curso">
+        </div>
+
+
+      </div>
+
+      <!-- TERCERA LINEA -->
+        <div class="form-group row">
+
+          <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Fecha de nacimiento</h6></label>
+          <div class="col-sm-3">
+            <input type="date" class="form-control"  name="nombre">
+          </div>
+
+          <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Localidad</h6></label>
+          <div class="col-sm-2">
+            <input type="text" class="form-control"  name="apellido">
+          </div>
+
+          <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Provincia</h6></label>
+          <div class="col-sm-2">
+            <input type="text" class="form-control"  name="curso">
+          </div>
+
+        </div>
+
+        <!-- CUARTA LINEA -->
+          <div class="form-group row">
+            <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Código Postal</h6></label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control"  name="curso">
+            </div>
+          </div>
+
+    <!-- SEPARADOR -->
+    <br><hr>
     <div class="form-group row">
-      <label for="" class="col-form-label" col-sm-2>Curso</label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" [(ngModel)]="alumno.curso" name="curso">
+        <h6 class="text-info">DATOS DEL CURSO</h6>
+    </div>
+    <hr>
+
+    <!-- QUINTA LINEA -->
+      <div class="form-group row">
+
+        <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Curso</h6></label>
+        <div class="col-sm-2">
+          <select class="form-control" [(ngModel)]="alumno.curso" name="curso">
+            <option value="1ESO">1º Eso</option>
+             <option value="2ESO">2º Eso</option>
+             <option value="3ESO">3º Eso</option>
+             <option value="4ESO">4º Eso</option>
+             <option value="1BACHILLERATO">1º Bachillerato</option>
+             <option value="2BACHILLERATO">2º Bachillerato</option>
+             <option value="1DAW">1º Daw</option>
+             <option value="2DAW">2º Daw</option>
+          </select>
+        </div>
+        <div class="col-sm-3"></div>
+        <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Foto</h6></label>
+        <div class="col-sm-2">
+          <input type="file" name="curso">
+        </div>
+      </div>
+
+      <!-- SEPARADOR -->
+      <br><hr>
+      <div class="form-group row">
+          <h6 class="text-info">DATOS DE ACCESO AL SISTEMA</h6>
+      </div>
+      <hr>
+      <!--  LINEA -->
+        <div class="form-group row">
+
+          <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Usuario</h6></label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control"  name="nombre" disabled>
+          </div>
+
+          <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Contraseña</h6></label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control"  name="apellido" disabled>
+          </div>
+
+        </div>
+    <!-- BOTONERA -->
+    <div class="form-group row">
+      <div class="col-sm-1 text-left">
+        <button class="btn btn-rounded btn-outline-danger" type="button" [routerLink] = "['/listadoAlumnos']">Cancelar</button>
+      </div>
+      <div class="col-sm-2 text-left">
+        <button class="btn btn-rounded btn-outline-warning" type="reset">Limpiar</button>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info" role="button">Crear alumno</button>
       </div>
     </div>
 
-    <div class="form-group row">
-      <div class="col-sm-6">
-        <button class="btn btn-primary" role="button">Crear alumno</button>
-      </div>
-    </div>
   </form>
 
 </div>

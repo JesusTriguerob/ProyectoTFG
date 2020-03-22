@@ -3,5 +3,6 @@ export class Alumno {
   nombre: string;
   apellido: string;
   fechaNac: String;
+  dni: String;
   curso: string;
 }

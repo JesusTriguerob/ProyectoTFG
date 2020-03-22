@@ -28,12 +28,101 @@ public class Alumno implements Serializable {
 	@Column
 	private String apellido;
 	
+	@Column
+	private String dni;
+	
+	@Column
+	private String email;
+	
+	@Column
+	private String calle;
+	
+	@Column(name="num_calle")
+	private String numCalle;
+	
+	@Column
+	private String telefono;
+	
 	@Column(name="fecha_nac")
 	@Temporal(TemporalType.DATE)
 	private Date fechaNac;
 	
 	@Column
+	private String localidad;
+	
+	@Column
+	private String provincia;
+	
+	@Column
+	private String codigoPostal;
+	
+	@Column
 	private String curso;
+	
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public String getNumCalle() {
+		return numCalle;
+	}
+
+	public void setNumCalle(String numCalle) {
+		this.numCalle = numCalle;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
+
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
 
 	public Long getId() {
 		return id;

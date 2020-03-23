@@ -15,7 +15,9 @@ import { FormsModule } from '@angular/forms';
 const routes: Routes = [
   {path: '', redirectTo: '/alumnos', pathMatch: 'full'},
   {path: 'listadoAlumnos', component: AlumnosComponent},
-  {path: 'alumnos/form', component: FormComponent}
+  {path: 'alumnos/form', component: FormComponent},
+  {path: 'alumnos/form/:id', component: FormComponent},
+  {path: 'api/alumnos/:id', component: AlumnosComponent}
 ];
 
 @NgModule({

@@ -3,29 +3,44 @@
 <div class="card-header"><h3 class="text-info"> {{ titulo }} </h3></div>
 <div class="card-body">
 
-  <form (ngSubmit) = "create()">
+  <form #alumnoForm="ngForm">
 
     <!-- SEPARADOR -->
     <div class="form-group row">
       <h6 class="text-info">DATOS DEL ALUMNO</h6>
     </div>
+
     <hr>
     <!-- PRIMERA LINEA -->
     <div class="form-group row">
 
       <label for="" class="col-form-label" col-sm-3><h6 class="text-info">Nombre</h6></label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" [(ngModel)]="alumno.nombre" name="nombre">
+        <input type="text" class="form-control" [(ngModel)]="alumno.nombre" name="nombre" required #nombre="ngModel">
+
+        <!-- Validación nombre -->
+        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors.required">
+            El nombre es obligatorio
+          </div>
+        </div>
+
       </div>
 
       <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Apellidos</h6></label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" [(ngModel)]="alumno.apellido" name="apellido">
+        <input type="text" class="form-control" [(ngModel)]="alumno.apellido" name="apellido" required #apellido="ngModel">
+        <!-- Validación Apellidos -->
+        <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+          <div *ngIf="apellido.errors.required">
+            El apellido es obligatorio
+          </div>
+        </div>
       </div>
-
+      
       <label for="" class="col-form-label" col-sm-3><h6 class="text-info">DNI</h6></label>
       <div class="col-sm-3">
-        <input type="text" class="form-control"  name="nombre">
+        <input type="text" class="form-control"  name="">
       </div>
 
     </div>
@@ -35,9 +50,15 @@
 
         <label for="" class="col-form-label" col-sm-3><h6 class="text-info">Email</h6></label>
         <div class="col-sm-3">
-          <input type="text" class="form-control"  name="nombre">
+          <input type="text" class="form-control"  name="email" required email #email="">
         </div>
 
+        <!-- Validación Email -->
+        <div class="alert alert-danger" *ngIf="apellido.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors.required">
+            El correo es obligatorio
+          </div>
+        </div>
         <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Calle</h6></label>
         <div class="col-sm-3">
           <input type="text" class="form-control"  name="apellido">
@@ -61,7 +82,7 @@
 
           <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Fecha de nacimiento</h6></label>
           <div class="col-sm-3">
-            <input type="date" class="form-control"  name="nombre">
+            <input type="date" class="form-control"  name="">
           </div>
 
           <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Localidad</h6></label>
@@ -125,7 +146,7 @@
 
           <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Usuario</h6></label>
           <div class="col-sm-3">
-            <input type="text" class="form-control"  name="nombre" disabled>
+            <input type="text" class="form-control"  name="" disabled>
           </div>
 
           <label for="" class="col-form-label" col-sm-2><h6 class="text-info">Contraseña</h6></label>
@@ -143,7 +164,11 @@
         <button class="btn btn-rounded btn-outline-warning" type="reset">Limpiar</button>
       </div>
       <div class="col-sm-2">
-        <button class="btn btn-info" role="button">Crear alumno</button>
+        <button class="btn btn-info" role="button" (click)='create()' *ngIf="!alumno.id else elseBlock" [disabled]="!alumnoForm.form.valid">Crear alumno</button>
+
+        <ng-template #elseBlock>
+          <button class="btn btn-info" role="button" (click)='update()' [disabled]="!alumnoForm.form.valid">Editar alumno</button>
+        </ng-template>
       </div>
     </div>
 

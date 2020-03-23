@@ -2,7 +2,12 @@
 <div class="card border-info mb-3" style="max-width: 100% ">
   <div class="card-body text-primary">
     <h5 class="card-title text-info ">LISTADO DE ALUMNOS</h5>
-  <table class="table table-table-bordered table-striped">
+
+  <div *ngIf="alumnos?.length == 0" class="alert alert-info">
+    No hay registros en la base de datos.
+  </div>
+
+  <table class="table table-table-bordered table-striped" *ngIf="alumnos?.length>0">
     <thead>
       <tr>
         <th>ID</th>
@@ -12,17 +17,22 @@
         <th>DNI</th>
         <th>Curso</th>
         <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
   <tbody >
-    <tr *ngFor="let Alumno of alumnos">
-      <td>{{Alumno.id}}</td>
-      <td>{{Alumno.nombre}}</td>
-      <td>{{Alumno.apellido}}</td>
-      <td>{{Alumno.fechaNac}}</td>
-      <td>{{Alumno.dni}}</td>
-      <td>{{Alumno.curso}}</td>
+    <tr *ngFor="let alumno of alumnos">
+      <td>{{alumno.id}}</td>
+      <td>{{alumno.nombre}}</td>
+      <td>{{alumno.apellido}}</td>
+      <td>{{alumno.fechaNac}}</td>
+      <td>{{alumno.dni}}</td>
+      <td>{{alumno.curso}}</td>
       <td><button class="btn btn-outline-info" name="info">+ info</button></td>
+      <td><button type="button" name="editar" [routerLink]="['/alumnos/form', alumno.id]" class="btn btn-outline-warning">Editar</button></td>
+      <td><button type="button" name="borrar" (click)='delete(alumno)' class="btn btn-outline-danger">Eliminar</button></td>
+
     </tr>
   </tbody>
   </table>

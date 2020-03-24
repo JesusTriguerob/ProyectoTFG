@@ -3,6 +3,10 @@ package com.tfg.model.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.tfg.enums.RolNombre;
+
+import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -11,7 +15,6 @@ import java.util.Set;
 @Entity
 public class Usuario {
   
-
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -65,12 +68,12 @@ public class Usuario {
     @NotNull
     private String password;
 
-    //Join que genera una tabla para la gestion de roles de aquellos usuarios que tengan mas de un rol
+	//Join que genera una tabla para la gestion de roles de aquellos usuarios que tengan mas de un rol
     //Por ejemplo: Usuario de Desarrollador, tiene que tener el rol que desee.
     @NotNull
-    @ManyToMany
+    @ManyToOne
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private Set<Rol> roles = new HashSet<>();
+    private	Rol rol;
     
     public Usuario() {
     }
@@ -79,7 +82,7 @@ public class Usuario {
 			@NotNull String dni, @NotNull String calle, @NotNull String numCalle, @NotNull String telefono1,
 			@NotNull String telefono2, Date fechaNac, @NotNull String localidad, @NotNull String provincia,
 			@NotNull String codigoPostal, @NotNull String nombreUsuario, @NotNull String email,
-			@NotNull String password) {
+			@NotNull String password,@NotNull String rolStr) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
@@ -95,6 +98,15 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 		this.email = email;
 		this.password = password;
+		if (rolStr.toLowerCase() == "admin") {
+			this.rol = new Rol(RolNombre.ROL_CONSEGERIA);
+		}
+		else if (rolStr.toLowerCase() == "profesor") {
+			this.rol = new Rol(RolNombre.ROL_PROFESOR);
+		}else {
+			this.rol = new Rol(RolNombre.ROL_ALUMNO);
+	}
+		
 	}
 
 	public Long getId() {
@@ -225,12 +237,13 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public Set<Rol> getRoles() {
-		return roles;
+	public Rol getRol() {
+		return rol;
 	}
 
-	public void setRoles(Set<Rol> roles) {
-		this.roles = roles;
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
+
 
 }

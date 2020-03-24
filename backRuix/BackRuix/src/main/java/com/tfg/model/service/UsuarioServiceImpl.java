@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tfg.controllers.UsuarioRestController;
 import com.tfg.model.dao.UsuarioDao;
 import com.tfg.model.entity.Usuario;
-import com.tfg.repository.UsuarioRepository;
+
 
 
 @Service
@@ -18,13 +21,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 	
 	//Inyección del repository
 	@Autowired
-	private UsuarioRepository usuarioRepository;
 	private UsuarioDao usuarioDao; 
+	private UsuarioRestController usuarioController;
 	
 	@Override
 	@Transactional(readOnly = true) // evitable en los implementados del dao de spring, obligatorio en las queries propias
 	public List<Usuario> findAll() {
-		return (List<Usuario>) usuarioDao.findAll(); //Casteo porque devuelve un Iterable
+		 return (List<Usuario>) usuarioDao.findAll(); //Casteo porque devuelve un Iterable
+		 
 	}
 
 	@Transactional(readOnly = true)
@@ -35,30 +39,19 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	@Transactional
-	public Usuario save(Usuario usuario) {
-		usuarioRepository.save(usuario); //TODO mirar si es lo mismo.
+	public Usuario create(Usuario usuario) {
 		return usuarioDao.save(usuario);
+		
 	}
 
 	@Override
-	@Transactional
 	public void delete(Long id) {
-		usuarioDao.deleteById(id);
+		
 	}
 
 	@Override
-	public Optional<Usuario> getByNombreUsuario(String nomUsu) {
-		return usuarioRepository.findByNombreUsuario(nomUsu);
-	}
-
-	@Override
-	public boolean existePorNombre(String nomUsu) {
-		return usuarioRepository.existsByNombreUsuario(nomUsu);
-	}
-
-	@Override
-	public boolean existePorEmail(String email) {
-		return usuarioRepository.existsByEmail(email);
+	public void update(Long id) {
+		
 	}
 
 }

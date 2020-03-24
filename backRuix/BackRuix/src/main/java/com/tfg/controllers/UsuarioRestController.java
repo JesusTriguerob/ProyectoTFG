@@ -18,51 +18,54 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tfg.model.entity.Usuario;
 import com.tfg.model.service.UsuarioService;
 
+
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class UsuarioRestController {
 
 	@Autowired
-	private UsuarioService Usuarioservice;
+	private UsuarioService usuarioService;
 	
 	//LISTA TODOS LOS ALUMNOS
-	@GetMapping("/usuario")
+	@GetMapping("/usuarios")
 	public List<Usuario> index(){
-		return Usuarioservice.findAll();
+		return usuarioService.findAll();
 	}
 	
 	//BUSCA UN ALUMNO
-	@GetMapping("/usuario/{id}")
+	@GetMapping("/usuarios/{id}")
 	public Usuario show(@PathVariable Long id) {
-		return Usuarioservice.findById(id);
+		return usuarioService.findById(id);
 	}
 	
 	//CREAR ALUMNO
-	@PostMapping("/alumnos")
+	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario create(@RequestBody Usuario alumno) {
-		return Usuarioservice.save(alumno);
+	public Usuario create(@RequestBody Usuario usuario) {
+		return usuarioService.create(usuario);
 	}
 	
 	//ACTUALIZA ALUMNO
-	@PutMapping("/alumnos/{id}")
+	@PutMapping("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario update(@RequestBody Usuario usuario , @PathVariable Long id) {
-		Usuario usuarioAct = Usuarioservice.findById(id);
-//		TODO rellenar con los sets
-//		usuarioAct.setApellido1(usuario.getApellido1());
-//		usuarioAct.setNombre(usuario.getNombre());
-//		usuarioAct.setCurso(alumno.getCurso());
-//		usuarioAct.setFechaNac(alumno.getFechaNac());
+	public Usuario update(@RequestBody Usuario alumno , @PathVariable Long id) {
+//		Usuario alumnoAct = usuarioService.findById(id);
+//		
+//		alumnoAct.setApellido(alumno.getApellido());
+//		alumnoAct.setNombre(alumno.getNombre());
+//		alumnoAct.setCurso(alumno.getCurso());
+//		alumnoAct.setFechaNac(alumno.getFechaNac());
 		
-		return Usuarioservice.save(usuarioAct);
+//		return usuarioService.save(alumnoAct);
+		return null;
 	}
 	
 	//BORRA UN ALUMNO
-	@DeleteMapping("/alumnos/{id}")
+	@DeleteMapping("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		Usuarioservice.delete(id);
+		usuarioService.delete(id);
 	}
 }

@@ -1,4 +1,4 @@
-package com.tfg.model.service;
+package com.tfg.back.service;
 
 import java.util.List;
 
@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tfg.model.dao.UsuarioDao;
-import com.tfg.model.entity.Usuario;
-
+import com.tfg.back.dao.UsuarioDao;
+import com.tfg.back.entity.Usuario;
 
 
 @Service
@@ -37,8 +36,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	@Transactional
-	public void delete(Usuario usuario) {
-		usuarioDao.delete(usuario);
+	public void delete(Usuario cliente) {
+		usuarioDao.delete(cliente);
 		
 	}
 

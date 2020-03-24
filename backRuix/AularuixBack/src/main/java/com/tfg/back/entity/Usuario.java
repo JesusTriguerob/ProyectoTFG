@@ -1,17 +1,24 @@
-package com.tfg.model.entity;
+package com.tfg.back.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="usuario")
-public class Usuario implements Serializable{
-  
-	
-	private static final long serialVersionUID = 3298678958242734954L;
+@Table(name="usuarios")
+public class Usuario implements Serializable {
+
+
+	private static final long serialVersionUID = 655469977308600524L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,12 +72,6 @@ public class Usuario implements Serializable{
 
     @NotNull
     private String password;
-
-//	//Join que genera una tabla para la gestion de roles 
-//    @NotNull
-//    @OneToOne
-//    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
-//    private	String rol;
     
 
 	public Long getId() {
@@ -200,6 +201,4 @@ public class Usuario implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 }

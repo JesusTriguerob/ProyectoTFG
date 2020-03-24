@@ -1,13 +1,13 @@
-package com.tfg;
+package com.tfg.back;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackRuixApplication {
+public class AularuixBackApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackRuixApplication.class, args);
+		SpringApplication.run(AularuixBackApplication.class, args);
 	}
 
 }

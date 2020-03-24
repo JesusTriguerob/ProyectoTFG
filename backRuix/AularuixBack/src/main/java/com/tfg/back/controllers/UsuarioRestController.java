@@ -1,9 +1,9 @@
-package com.tfg.controllers;
-
-import java.util.Date;
-import java.util.List;
+package com.tfg.back.controllers;
 
 import org.springframework.http.HttpStatus;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tfg.model.entity.Usuario;
-import com.tfg.model.service.UsuarioService;
-
-
+import com.tfg.back.entity.Usuario;
+import com.tfg.back.service.UsuarioService;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
@@ -50,10 +48,10 @@ public class UsuarioRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario update(@RequestBody Usuario usuario, @PathVariable Long id) {
 		Usuario currentCliente = this.usuarioService.findById(id);
-//		currentCliente.setNombre(usuario.getNombre());
+		currentCliente.setNombre(usuario.getNombre());
 //		currentCliente.setApellido(usuario.getApellido());
-//		currentCliente.setEmail(usuario.getEmail());
-//		this.usuarioService.save(currentCliente);
+		currentCliente.setEmail(usuario.getEmail());
+		this.usuarioService.save(currentCliente);
 		return currentCliente;
 	}
 

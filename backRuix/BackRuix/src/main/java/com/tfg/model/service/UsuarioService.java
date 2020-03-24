@@ -7,19 +7,15 @@ import org.springframework.http.ResponseEntity;
 
 import com.tfg.model.entity.Usuario;
 
+
 public interface UsuarioService {
 	
 	public List<Usuario> findAll();
 	
+	public void save(Usuario cliente);
+	
 	public Usuario findById(Long id);
 	
-	public Usuario create(Usuario usuario);
-	
-	public void delete(Long id);
-	
-	public void update(Long id);
-	
-	
-	
+	public void delete(Usuario cliente);
 
 }

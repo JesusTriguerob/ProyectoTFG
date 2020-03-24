@@ -1,20 +1,18 @@
 package com.tfg.model.entity;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import com.tfg.enums.RolNombre;
-
-import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
-public class Usuario {
+@Table(name="usuario")
+public class Usuario implements Serializable{
   
+	
+	private static final long serialVersionUID = 3298678958242734954L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -68,46 +66,12 @@ public class Usuario {
     @NotNull
     private String password;
 
-	//Join que genera una tabla para la gestion de roles de aquellos usuarios que tengan mas de un rol
-    //Por ejemplo: Usuario de Desarrollador, tiene que tener el rol que desee.
-    @NotNull
-    @ManyToOne
-    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private	Rol rol;
+//	//Join que genera una tabla para la gestion de roles 
+//    @NotNull
+//    @OneToOne
+//    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
+//    private	String rol;
     
-    public Usuario() {
-    }
-
-    public Usuario(@NotNull String nombre, @NotNull String apellido1, @NotNull String apellido2,
-			@NotNull String dni, @NotNull String calle, @NotNull String numCalle, @NotNull String telefono1,
-			@NotNull String telefono2, Date fechaNac, @NotNull String localidad, @NotNull String provincia,
-			@NotNull String codigoPostal, @NotNull String nombreUsuario, @NotNull String email,
-			@NotNull String password,@NotNull String rolStr) {
-		this.nombre = nombre;
-		this.apellido1 = apellido1;
-		this.apellido2 = apellido2;
-		this.dni = dni;
-		this.calle = calle;
-		this.numCalle = numCalle;
-		this.telefono1 = telefono1;
-		this.telefono2 = telefono2;
-		this.fechaNac = fechaNac;
-		this.localidad = localidad;
-		this.provincia = provincia;
-		this.codigoPostal = codigoPostal;
-		this.nombreUsuario = nombreUsuario;
-		this.email = email;
-		this.password = password;
-		if (rolStr.toLowerCase() == "admin") {
-			this.rol = new Rol(RolNombre.ROL_CONSEGERIA);
-		}
-		else if (rolStr.toLowerCase() == "profesor") {
-			this.rol = new Rol(RolNombre.ROL_PROFESOR);
-		}else {
-			this.rol = new Rol(RolNombre.ROL_ALUMNO);
-	}
-		
-	}
 
 	public Long getId() {
 		return id;
@@ -235,14 +199,6 @@ public class Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Rol getRol() {
-		return rol;
-	}
-
-	public void setRol(Rol rol) {
-		this.rol = rol;
 	}
 
 

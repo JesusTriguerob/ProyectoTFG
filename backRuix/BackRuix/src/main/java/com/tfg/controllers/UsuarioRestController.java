@@ -1,9 +1,10 @@
 package com.tfg.controllers;
 
+import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,52 +21,46 @@ import com.tfg.model.service.UsuarioService;
 
 
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api")
 public class UsuarioRestController {
 
 	@Autowired
 	private UsuarioService usuarioService;
-	
-	//LISTA TODOS LOS ALUMNOS
+
 	@GetMapping("/usuarios")
-	public List<Usuario> index(){
+	public List<Usuario> index() {
 		return usuarioService.findAll();
 	}
-	
-	//BUSCA UN ALUMNO
+
 	@GetMapping("/usuarios/{id}")
 	public Usuario show(@PathVariable Long id) {
-		return usuarioService.findById(id);
+		return this.usuarioService.findById(id);
 	}
-	
-	//CREAR ALUMNO
-	@PostMapping("/create")
+
+	@PostMapping("/usuarios")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario create(@RequestBody Usuario usuario) {
-		return usuarioService.create(usuario);
+		this.usuarioService.save(usuario);
+		return usuario;
 	}
-	
-	//ACTUALIZA ALUMNO
+
 	@PutMapping("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario update(@RequestBody Usuario alumno , @PathVariable Long id) {
-//		Usuario alumnoAct = usuarioService.findById(id);
-//		
-//		alumnoAct.setApellido(alumno.getApellido());
-//		alumnoAct.setNombre(alumno.getNombre());
-//		alumnoAct.setCurso(alumno.getCurso());
-//		alumnoAct.setFechaNac(alumno.getFechaNac());
-		
-//		return usuarioService.save(alumnoAct);
-		return null;
+	public Usuario update(@RequestBody Usuario usuario, @PathVariable Long id) {
+		Usuario currentCliente = this.usuarioService.findById(id);
+//		currentCliente.setNombre(usuario.getNombre());
+//		currentCliente.setApellido(usuario.getApellido());
+//		currentCliente.setEmail(usuario.getEmail());
+//		this.usuarioService.save(currentCliente);
+		return currentCliente;
 	}
-	
-	//BORRA UN ALUMNO
+
 	@DeleteMapping("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		usuarioService.delete(id);
+		Usuario currentCliente = this.usuarioService.findById(id);
+		this.usuarioService.delete(currentCliente);
 	}
 }

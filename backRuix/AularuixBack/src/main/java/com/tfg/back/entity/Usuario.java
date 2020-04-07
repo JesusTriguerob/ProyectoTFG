@@ -46,7 +46,6 @@ public class Usuario implements Serializable {
     @NotNull
     private String telefono1;
     
-    @NotNull
     private String telefono2;
     
 	@Column(name="fecha_nac")
@@ -59,7 +58,8 @@ public class Usuario implements Serializable {
     @NotNull
     private String provincia;
     
-    @NotNull
+   
+	@NotNull
     private String codigoPostal;
     
     @NotNull
@@ -73,7 +73,7 @@ public class Usuario implements Serializable {
     @NotNull
     private String password;
     
-
+    
 	public Long getId() {
 		return id;
 	}

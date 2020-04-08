@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -62,7 +63,6 @@ public class Usuario implements Serializable {
 	@NotNull
     private String codigoPostal;
     
-    @NotNull
     @Column(unique = true)
     private String nombreUsuario;
 
@@ -70,10 +70,20 @@ public class Usuario implements Serializable {
     @Column(unique = true)
     private String email;
 
-    @NotNull
     private String password;
     
+    @NotNull
+    private String rol;
     
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	public Long getId() {
 		return id;
 	}

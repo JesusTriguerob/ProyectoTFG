@@ -24,7 +24,7 @@
         <th></th>
       </tr>
     <tr *ngFor="let usuario of usuarios" >
-      <th><span class="material-icons">insert_photo</span> </th>
+      <td></td>
       <td>{{usuario.id}}</td>
       <td>{{usuario.nombre}}</td>
       <td>{{usuario.apellido1}} {{usuario.apellido2}}</td>
@@ -37,11 +37,8 @@
       <button type="button" name="borrar" (click)='delete(usuario)' class="btn btn-danger btn-sm" style="margin-left:10px" ><span class="material-icons">delete</span></button></td>
     </tr>
   </table>
-
-<div class="my-2 text-left">
-  <button class="btn btn-rounded btn-info" type="button" [routerLink] = "['/usuarios/form']">Crear usuario</button>
-</div>
-
   </div>
-
+  <div class="my-2 text-left">
+    <button class="btn btn-rounded btn-info" type="button" [routerLink] = "['/usuarios/form']">Crear usuario</button>
+  </div>
 <div style="margin-top: 10px"></div>

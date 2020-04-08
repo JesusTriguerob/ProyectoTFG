@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BibliotecaComponent } from './biblioteca/biblioteca.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'usuarios/form', component: FormComponent},
   {path: 'usuarios/form/:id', component: FormComponent},
   {path: 'usuarios/poputInfo/:id', component: PoputInfoComponent},
-  {path: 'api/usuarios/:id', component: UsuarioComponent}
+  {path: 'api/usuarios/:id', component: UsuarioComponent},
+  {path: 'biblioteca', component: BibliotecaComponent}
 ];
 
 @NgModule({
@@ -32,7 +34,8 @@ const routes: Routes = [
     FooterComponent,
     UsuarioComponent,
     FormComponent,
-    PoputInfoComponent
+    PoputInfoComponent,
+    BibliotecaComponent
   ],
   imports: [
     BrowserModule,

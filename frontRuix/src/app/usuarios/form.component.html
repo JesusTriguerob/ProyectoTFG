@@ -4,12 +4,6 @@
 			<hr/>
   </div>
 
-  <div class="col-xs-1 col-sm-1 col-md-1">
-      <div class="form-group row">
-    <img src="assets/default.png" width="100px" /> <br>
-    <input type="file">
-      </div>
-  </div>
 
   <form #usuarioForm="ngForm">
       <div class="well">
@@ -209,10 +203,10 @@
                   <div class="form-group row">
                       <label for="nombre" class="col-form-label col-sm-4 text-info">Rol de usuario*:</label>
                     <div class="col-sm-8">
-                      <select class="form-control" name="rol" name="rol">
-                        <option value="alumno">Alumno</option>
-                         <option value="profesor">Profesor</option>
-                         <option value="admin">Administración</option>
+                      <select  type="text" class="form-control" name="rol" name="rol"  [(ngModel)]="usuario.rol">
+                        <option value="Alumno">Alumno</option>
+                         <option value="Profesor">Profesor</option>
+                         <option value="Administracion">Administración</option>
                       </select>
                     </div>
                   </div>
@@ -230,7 +224,7 @@
                     <div class="form-group row">
                       <label for="" class="col-form-label" col-sm-2><h4 class="text-info">Usuario</h4></label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control"  [(ngModel)]="usuario.nombreUsuario" name="nombreUsuario" required #nombreUsuario="ngModel">
+                        <input type="text" class="form-control"  [(ngModel)]="usuario.nombreUsuario" name="nombreUsuario" disabled>
                       </div>
                     </div>
                 </div>
@@ -238,7 +232,7 @@
                     <div class="form-group row">
                       <label for="" class="col-form-label" col-sm-2><h4 class="text-info">Contraseña</h4></label>
                       <div class="col-sm-8">
-                          <input type="text" class="form-control" [(ngModel)]="usuario.password" name="password" required #password="ngModel">
+                          <input type="text" class="form-control" [(ngModel)]="usuario.password" name="password" disabled>
                       </div>
                     </div>
                 </div>

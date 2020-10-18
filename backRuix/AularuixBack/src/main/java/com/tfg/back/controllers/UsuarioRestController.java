@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tfg.back.entity.Usuario;
+import com.tfg.back.service.LibroService;
 import com.tfg.back.service.UsuarioService;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
@@ -32,6 +33,9 @@ public class UsuarioRestController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private LibroService libroService;
 
 	@GetMapping("/usuarios")
 	public List<Usuario> index() {

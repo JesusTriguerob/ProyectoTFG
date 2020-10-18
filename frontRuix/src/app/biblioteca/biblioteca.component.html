@@ -1,5 +1,8 @@
 <div style="margin-top: 10px"></div>
 <div class="container">
+  <div>
+     <img src="assets/img/biblioteca.png" alt="..." width="100%" style="padding:10px">
+  </div>
   <div class="content text-info">
 			<h1>Biblioteca</h1>
 			<hr/>
@@ -10,13 +13,26 @@
         <th></th>
         <th>ID</th>
         <th>Nombre</th>
-        <th>Autor</th>
+        <th>Temática</th>
         <th>Estado</th>
+        <th>Alquilado</th>
         <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let libro of libros" >
+        <td></td>
+        <td>{{libro.id}}</td>
+        <td>{{libro.nombre}}</td>
+        <td>{{libro.tematica}}</td>
+        <td>{{libro.estado}}</td>
+        <td>{{libro.alquilado}}</td>
+        <td>
+        <button type="button" name="editar" [routerLink]="['/biblioteca/formLibro', libro.id]" class="btn btn-warning btn-sm" style="margin-left:10px" > <span class="material-icons">edit</span></button>
+        <button type="button" name="borrar" (click)='delete(libro)' class="btn btn-danger btn-sm" style="margin-left:10px" ><span class="material-icons">delete</span></button>
+        <button type="button" name="borrar" (click)='alquilar(libro)' class="btn btn-success" style="margin-left:10px" >Alquilar</button></td>
       </tr>
   </table>
   </div>
   <div class="my-2 text-left">
-    <button class="btn btn-rounded btn-info" type="button" [routerLink] = "['/usuarios/form']">Crear libro</button>
+    <button class="btn btn-rounded btn-info" type="button" [routerLink] = "['/biblioteca/formLibro']">Crear libro</button>
   </div>
 <div style="margin-top: 10px"></div>

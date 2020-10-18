@@ -15,6 +15,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BibliotecaComponent } from './biblioteca/biblioteca.component';
+import { LibroService } from '../app/biblioteca/libro.service';
+import { FormLibroComponent } from './biblioteca/formLibro.component';
 
 
 const routes: Routes = [
@@ -24,7 +26,9 @@ const routes: Routes = [
   {path: 'usuarios/form/:id', component: FormComponent},
   {path: 'usuarios/poputInfo/:id', component: PoputInfoComponent},
   {path: 'api/usuarios/:id', component: UsuarioComponent},
-  {path: 'biblioteca', component: BibliotecaComponent}
+  {path: 'biblioteca', component: BibliotecaComponent},
+  {path: 'biblioteca/formLibro', component: FormLibroComponent},
+  {path: 'biblioteca/formLibro/:id', component: FormLibroComponent}
 ];
 
 @NgModule({
@@ -34,6 +38,7 @@ const routes: Routes = [
     FooterComponent,
     UsuarioComponent,
     FormComponent,
+    FormLibroComponent,
     PoputInfoComponent,
     BibliotecaComponent
   ],
@@ -47,7 +52,7 @@ const routes: Routes = [
     MatPaginatorModule,
     BrowserAnimationsModule
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService,LibroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

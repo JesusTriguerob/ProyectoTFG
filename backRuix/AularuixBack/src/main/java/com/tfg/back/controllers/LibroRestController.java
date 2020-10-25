@@ -19,6 +19,7 @@ import com.tfg.back.entity.Libro;
 import com.tfg.back.enums.Alquilado;
 import com.tfg.back.enums.Estado;
 import com.tfg.back.service.LibroService;
+import com.tfg.back.service.UsuarioService;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
@@ -27,12 +28,20 @@ public class LibroRestController {
 
 	@Autowired
 	private LibroService libroService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@GetMapping("/biblioteca")
 	public List<Libro> index() {
 		return libroService.findAll();
 	}
-
+	
+	@GetMapping("/biblioteca/alquilado")
+	public List<Libro> getBooksForState() {
+		return libroService.findAll();
+	}
+	
 	@GetMapping("/biblioteca/{id}")
 	public Libro show(@PathVariable Long id) {
 		return this.libroService.findById(id);
@@ -43,6 +52,7 @@ public class LibroRestController {
 	public Libro create(@RequestBody Libro libro) {	
 		libro.setEstado(Estado.NUEVO);
 		libro.setAlquilado(Alquilado.DISPONIBLE);
+//		libro.setUsuario("USUARIO LOGUEADO");
 		this.libroService.save(libro);
 		return libro;
 	}
@@ -63,5 +73,14 @@ public class LibroRestController {
 	public void delete(@PathVariable Long id) {
 		Libro currentLibro = this.libroService.findById(id);
 		this.libroService.delete(currentLibro);
+	}
+	
+	@PostMapping("/biblioteca/alquilar")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Libro alquilar(@RequestBody Libro libro) {	
+		libro.setAlquilado(Alquilado.ALQUILADO);
+//		libro.setUsuario("USUARIO LOGUEADO");
+		this.libroService.save(libro);
+		return libro;
 	}
 }

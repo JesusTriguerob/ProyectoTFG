@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tfg.back.dao.LibroDao;
 import com.tfg.back.entity.Libro;
+import com.tfg.back.enums.Alquilado;
 
 @Service
 public class LibroServiceImpl implements LibroService{
@@ -37,7 +38,12 @@ public class LibroServiceImpl implements LibroService{
 	@Transactional
 	public void delete(Libro libro) {
 		libroDao.delete(libro);
-		
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Libro> getBooksForState() {
+		return (List<Libro>) libroDao.findAll();
 	}
 
 }

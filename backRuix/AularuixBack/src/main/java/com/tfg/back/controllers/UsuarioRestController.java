@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tfg.back.entity.Usuario;
+import com.tfg.back.entity.UsuarioOld;
 import com.tfg.back.service.LibroService;
 import com.tfg.back.service.UsuarioService;
 
@@ -38,18 +38,18 @@ public class UsuarioRestController {
 	private LibroService libroService;
 
 	@GetMapping("/usuarios")
-	public List<Usuario> index() {
+	public List<UsuarioOld> index() {
 		return usuarioService.findAll();
 	}
 
 	@GetMapping("/usuarios/{id}")
-	public Usuario show(@PathVariable Long id) {
+	public UsuarioOld show(@PathVariable Long id) {
 		return this.usuarioService.findById(id);
 	}
 
 	@PostMapping("/usuarios")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario create(@RequestBody Usuario usuario) {	
+	public UsuarioOld create(@RequestBody UsuarioOld usuario) {	
 	//Generador usuario y contraseña aleatorio.
 		//nombre usuario = 3 primeras letras de nombre y apellidos y 3 ultimos numeros dni.
 		String nomUsu = usuario.getNombre().substring(0,3).concat(usuario.getApellido1().substring(0,3).concat(usuario.getApellido2().substring(0, 3)).concat(usuario.getDni().substring(5, 8)));
@@ -70,8 +70,8 @@ public class UsuarioRestController {
 
 	@PutMapping("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario update(@RequestBody Usuario usuario, @PathVariable Long id) {
-		Usuario usuarioUp = this.usuarioService.findById(id);
+	public UsuarioOld update(@RequestBody UsuarioOld usuario, @PathVariable Long id) {
+		UsuarioOld usuarioUp = this.usuarioService.findById(id);
 		usuarioUp.setNombre(usuario.getNombre());
 		usuarioUp.setApellido1(usuario.getApellido1());
 		usuarioUp.setApellido2(usuario.getApellido2());
@@ -93,7 +93,7 @@ public class UsuarioRestController {
 	@DeleteMapping("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		Usuario currentCliente = this.usuarioService.findById(id);
+		UsuarioOld currentCliente = this.usuarioService.findById(id);
 		this.usuarioService.delete(currentCliente);
 	}
 }

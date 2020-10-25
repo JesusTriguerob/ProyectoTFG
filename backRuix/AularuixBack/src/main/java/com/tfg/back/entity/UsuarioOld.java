@@ -26,8 +26,8 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="usuarios")
-public class Usuario implements Serializable {
+@Table(name="usuarioOld")
+public class UsuarioOld implements Serializable {
 
 
 	private static final long serialVersionUID = 655469977308600524L;

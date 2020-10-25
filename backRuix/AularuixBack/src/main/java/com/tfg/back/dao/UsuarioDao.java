@@ -2,8 +2,8 @@ package com.tfg.back.dao;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.tfg.back.entity.Usuario;
+import com.tfg.back.entity.UsuarioOld;
 
-public interface UsuarioDao extends PagingAndSortingRepository<Usuario, Long>{
+public interface UsuarioDao extends PagingAndSortingRepository<UsuarioOld, Long>{
 
 }

@@ -4,4 +4,5 @@ export class Libro {
   tematica: string;
   estado: string;
   alquilado: string;
+  usuario: string;
 }

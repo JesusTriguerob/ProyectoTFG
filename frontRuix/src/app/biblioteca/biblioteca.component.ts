@@ -10,17 +10,44 @@ import swal from 'sweetalert2'
 export class BibliotecaComponent implements OnInit {
 
 libros: Libro[];
+libro: Libro;
+librosAlquilados: Libro[];
 
   constructor(private libroService: LibroService) { }
 
   ngOnInit(): void {
     this.libroService.getLibros().subscribe(
-      libros => this.libros = libros
+      libros => this.libros = libros.filter(lib => lib.alquilado == "DISPONIBLE")
+    );
+    this.libroService.getLibrosForState().subscribe(
+      librosAlquilados => this.librosAlquilados = librosAlquilados.filter(lib => lib.alquilado == "ALQUILADO")
     );
   }
 
   public alquilar(libro: Libro): void{
-      this.libroService.alquilar(libro)
+    swal.fire({
+    title: '¿Quieres alquilar este libro?',
+    text: "",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, alquilar'
+  }).then((result) => {
+    if (result.value) {
+      this.libroService.getLibrosForState();
+      this.libroService.alquilar(libro).subscribe(
+        response => {
+          this.libros = this.libros.filter(lib => lib !== libro) // Quita el libro alquilado de la lista y se añade a alquilados.
+          swal.fire(
+            'Alquilado!',
+            'El libro a sido alquilado con éxito',
+            'success'
+          )
+        }
+      )
+    }
+  })
   }
 
   public delete(libro: Libro): void{

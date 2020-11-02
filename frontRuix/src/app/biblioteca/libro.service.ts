@@ -20,6 +20,12 @@ export class LibroService {
     );
   }
 
+  getLibrosForState(): Observable<Libro[]> {
+    return this.http.get(this.urlEndPoint).pipe(
+      map( (response) => response as Libro[] )
+    );
+  }
+
   create(libro: Libro) : Observable<Libro>{
     return this.http.post<Libro>(this.urlEndPoint, libro, {headers: this.httpHeaders})
   }
@@ -41,6 +47,6 @@ export class LibroService {
   }
 
   alquilar(libro: Libro) : Observable<Libro>{
-    return this.http.post<Libro>(this.urlEndPoint, libro, {headers: this.httpHeaders})
+    return this.http.post<Libro>(`${this.urlEndPoint}/alquilar`, libro, {headers: this.httpHeaders})
   }
 }

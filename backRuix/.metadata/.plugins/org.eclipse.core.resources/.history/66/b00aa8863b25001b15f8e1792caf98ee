@@ -1,5 +1,0 @@
-package com.backRuix.crud.enums;
-
-public enum Categoria {
-ciencia_ficcion, AVENTURAS, INFANTIL, HISTORIA, EDUCACIÓN
-}

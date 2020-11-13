@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.backRuix.crud.enums.Categoria"/>
+    <fullyQualifiedTypeName name="com.backRuix.crud.entity.Libro"/>
+    <fullyQualifiedTypeName name="com.backRuix.crud.enums.Alquilado"/>
+    <fullyQualifiedTypeName name="com.backRuix.crud.enums.Estado"/>
+</qualifiedTypeNameHistroy>

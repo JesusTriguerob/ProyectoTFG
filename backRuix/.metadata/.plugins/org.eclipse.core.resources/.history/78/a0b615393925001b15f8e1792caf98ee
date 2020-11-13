@@ -1,0 +1,82 @@
+package com.backRuix.crud.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.backRuix.crud.enums.Categoria;
+import com.backRuix.crud.enums.Estado;
+
+@Entity
+public class Libro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String nombre;
+    private Categoria categoria;
+    private Estado estado;
+    private boolean alquilado;
+    private String usuario;
+
+    public Libro() {
+    }
+
+    public Libro(String nombre, Categoria categoria, Estado estado, boolean alquilado, String usuario) {
+		super();
+		this.nombre = nombre;
+		this.categoria = categoria;
+		this.estado = estado;
+		this.alquilado = alquilado;
+		this.usuario = usuario;
+	}
+
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+	public boolean isAlquilado() {
+		return alquilado;
+	}
+
+	public void setAlquilado(boolean alquilado) {
+		this.alquilado = alquilado;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+}

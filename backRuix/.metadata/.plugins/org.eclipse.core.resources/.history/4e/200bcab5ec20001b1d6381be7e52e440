@@ -1,0 +1,72 @@
+package com.backRuix.crud.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="alumno")
+public class Alumno implements Serializable {
+
+
+	private static final long serialVersionUID = 655469977308600524L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
+    @NotNull
+    private String nombre;
+    
+    @NotNull
+    private String apellido1;
+    
+    @NotNull
+    private String apellido2;
+
+    @NotNull
+    private String dni;
+    
+    @NotNull
+    private String calle;
+    
+    @Column(name = "num_calle")
+    @NotNull
+    private String numCalle;
+    
+    @NotNull
+    private String telefono1;
+    
+    private String telefono2;
+    
+	@Column(name="fecha_nac")
+	@Temporal(TemporalType.DATE)
+	private Date fechaNac;
+	
+    @NotNull
+    private String localidad;
+    
+    @NotNull
+    private String provincia;
+    
+    @Column(name="codigo_postal")
+	@NotNull
+    private String codigoPostal;
+    
+    @NotNull
+    private String email;
+    
+    @NotNull
+    private String rol;
+    
+
+}

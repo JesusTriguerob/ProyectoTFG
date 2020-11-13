@@ -1,0 +1,5 @@
+package com.backRuix.crud.enums;
+
+public enum Alquilado {
+	ALQUILADO, DISPONIBLE
+}

@@ -1,0 +1,203 @@
+package com.backRuix.crud.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="alumno")
+public class Alumno implements Serializable {
+
+
+	private static final long serialVersionUID = 655469977308600524L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
+    @NotNull
+    private String nombre;
+    
+    @NotNull
+    private String apellido1;
+    
+    @NotNull
+    private String apellido2;
+
+    @NotNull
+    private String dni;
+    
+    @NotNull
+    private String calle;
+    
+    @Column(name = "num_calle")
+    @NotNull
+    private String numCalle;
+    
+    @NotNull
+    private String telefono1;
+    
+	@Column(name="fecha_nac")
+	@Temporal(TemporalType.DATE)
+	private Date fechaNac;
+	
+    @NotNull
+    private String localidad;
+    
+    @NotNull
+    private String provincia;
+    
+    @Column(name="codigo_postal")
+	@NotNull
+    private String codigoPostal;
+    
+    @NotNull
+    private String email;
+    
+    @NotNull
+    private String rol;
+
+	public Alumno(Long id, @NotNull String nombre, @NotNull String apellido1, @NotNull String apellido2,
+			@NotNull String dni, @NotNull String calle, @NotNull String numCalle, @NotNull String telefono1,
+			Date fechaNac, @NotNull String localidad, @NotNull String provincia, @NotNull String codigoPostal,
+			@NotNull String email, @NotNull String rol) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.dni = dni;
+		this.calle = calle;
+		this.numCalle = numCalle;
+		this.telefono1 = telefono1;
+		this.fechaNac = fechaNac;
+		this.localidad = localidad;
+		this.provincia = provincia;
+		this.codigoPostal = codigoPostal;
+		this.email = email;
+		this.rol = rol;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido1() {
+		return apellido1;
+	}
+
+	public void setApellido1(String apellido1) {
+		this.apellido1 = apellido1;
+	}
+
+	public String getApellido2() {
+		return apellido2;
+	}
+
+	public void setApellido2(String apellido2) {
+		this.apellido2 = apellido2;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public String getNumCalle() {
+		return numCalle;
+	}
+
+	public void setNumCalle(String numCalle) {
+		this.numCalle = numCalle;
+	}
+
+	public String getTelefono1() {
+		return telefono1;
+	}
+
+	public void setTelefono1(String telefono1) {
+		this.telefono1 = telefono1;
+	}
+
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
+
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+    
+	
+
+}

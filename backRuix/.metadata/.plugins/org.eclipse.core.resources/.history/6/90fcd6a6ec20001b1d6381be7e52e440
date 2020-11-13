@@ -1,0 +1,5 @@
+package com.backRuix.crud.entity;
+
+public class Alumno {
+
+}
